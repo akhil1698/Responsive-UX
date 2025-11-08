@@ -40,16 +40,11 @@ function App() {
       {/* Add toolbar spacer to offset fixed header height */}
       <Toolbar />
       <MainContent>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <TestCards />
-          {/* <Typography variant="h4" gutterBottom>
-          Main Content
-        </Typography>
-        <Typography variant="body1">
-          This is where your main content goes. Resize the window to see how it adapts.
-        </Typography> */}
-          <Box sx={{ height: "200vh" }} /> {/* to simulate scroll */}
-        </Box>
+        {/* Components*/}
+        <TestCards />
+        {/* to simulate scroll*/}
+        <Box sx={{ height: "200vh" }} /> {/* to simulate scroll */}
+        {/* </Box> */}
       </MainContent>
 
       <Footer />
