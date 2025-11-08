@@ -32,20 +32,29 @@ import TestCards from "./Components/TestCards";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import MainContent from "./Components/MainContent";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import Profile from "./Components/Profile/Profile";
 
 function App() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Header />
-      {/* Add toolbar spacer to offset fixed header height */}
-      <Toolbar />
-      <MainContent>
-        {/* Components*/}
-        <TestCards />
-        {/* to simulate scroll*/}
-        <Box sx={{ height: "200vh" }} /> {/* to simulate scroll */}
-        {/* </Box> */}
-      </MainContent>
+      {/* <BrowserRouter> */}
+      <HashRouter>
+        <Header />
+        {/* Add toolbar spacer to offset fixed header height */}
+        <Toolbar />
+        <MainContent>
+          {/* Components*/}
+          <Routes>
+            <Route path="/" element={<TestCards />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+          </Routes>
+          {/* to simulate scroll*/}
+          <Box sx={{ height: "200vh" }} /> {/* to simulate scroll */}
+          {/* </Box> */}
+        </MainContent>
+      </HashRouter>
+      {/* </BrowserRouter> */}
 
       <Footer />
     </Box>
