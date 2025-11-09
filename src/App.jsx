@@ -34,29 +34,30 @@ import Footer from "./Components/Footer";
 import MainContent from "./Components/MainContent";
 import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import Profile from "./Components/Profile/Profile";
+import Login from "./Components/Login/Login";
+import './App.css'
 
 function App() {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       {/* <BrowserRouter> */}
       <HashRouter>
-        <Header />
-        {/* Add toolbar spacer to offset fixed header height */}
-        <Toolbar />
-        <MainContent>
-          {/* Components*/}
-          <Routes>
-            <Route path="/" element={<TestCards />}></Route>
-            <Route path="/profile" element={<Profile />}></Route>
-          </Routes>
-          {/* to simulate scroll*/}
-          <Box sx={{ height: "200vh" }} /> {/* to simulate scroll */}
-          {/* </Box> */}
-        </MainContent>
+        {/* Components*/}
+        <Routes>
+          <Route path="/" element={<Login />} />
+
+          {/* <Route path="/" element={<TestCards />}></Route> */}
+          <Route path="/layout" element={<Layout />}>
+            <Route path="cards" element={<TestCards />}></Route>
+            <Route path="profile" element={<Profile />}></Route>
+          </Route>
+        </Routes>
+        {/* to simulate scroll*/}
+        {/* <Box sx={{ height: "200vh" }} />  */}
+        {/* to simulate scroll */}
+        {/* </Box> */}
       </HashRouter>
       {/* </BrowserRouter> */}
-
-      <Footer />
     </Box>
   );
 }
