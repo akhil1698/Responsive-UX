@@ -9,19 +9,33 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
 import React, { useState } from "react";
 import login_tree from "../../../public/Images/login_tree.jpg";
 import SignUp from "../SignUp/SignUp";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
   const signUpHandler = () => {
     setIsSignUp(true);
   };
   return (
     <>
-      {isSignUp ? <SignUp/> : (
+      {isSignUp ? (
+        <SignUp />
+      ) : (
         <Box
           sx={{
             backgroundImage: `url(${login_tree})`,
@@ -75,19 +89,22 @@ function Login() {
               {/* <TextField label="Password" ></TextField> */}
               <OutlinedInput
                 id="outlined-adornment-password"
-                type={"password"}
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
+                onChange={handleChangePassword}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
-                      aria-label={"display the password"}
-                      // onClick={handleClickShowPassword}
-                      // onMouseDown={handleMouseDownPassword}
+                      aria-label={
+                        showPassword ? "hide password" : "show password"
+                      }
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
                       // onMouseUp={handleMouseUpPassword}
                       edge="end"
                     >
-                      <Visibility />
-                      {/* {showPassword ? <VisibilityOff /> : <Visibility />} */}
+                      {/* <Visibility /> */}
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 }
